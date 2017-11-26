@@ -13,12 +13,20 @@ namespace CRUDWCFSOAP.WCF
     {
         public void Deleteperson(int id)
         {
-            throw new NotImplementedException();
+            PersonContext po = new PersonContext();
+            var c = (from per in po.Persons
+                     where per.id == id
+                     select per).First();
+            po.Persons.Remove(c);
+            po.SaveChanges();
         }
 
         public IEnumerable<Person> GetPerson()
         {
-            throw new NotImplementedException();
+            List<Person> li = new List<Person>();
+            PersonContext po = new PersonContext();
+            li = po.Persons.ToList();
+            return li;
         }
 
         public void InsertPerson(Person pobj)
@@ -30,7 +38,14 @@ namespace CRUDWCFSOAP.WCF
 
         public void Updateperson(Person pobj)
         {
-            throw new NotImplementedException();
+            PersonContext po = new PersonContext();
+            var c = (from per in po.Persons
+                     where per.id == pobj.id
+                     select per).First();
+            c.Address = pobj.Address;
+            c.Name = pobj.Name;
+            po.SaveChanges();
+
         }
     }
 }
