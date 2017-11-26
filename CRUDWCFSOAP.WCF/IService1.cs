@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -25,10 +26,14 @@ namespace CRUDWCFSOAP.WCF
     public class Person
     {
         [DataMember]
+        [Key]
+        [Required]
         public int id { get; set; }
         [DataMember]
+        [Required]
         public string Name { get; set; }
         [DataMember]
+        [Required]
         public string Address { get; set; }
     }
 
