@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRUDWCFSOAP.WCF.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -22,7 +23,9 @@ namespace CRUDWCFSOAP.WCF
 
         public void InsertPerson(Person pobj)
         {
-            throw new NotImplementedException();
+            PersonContext po = new PersonContext();
+            po.Persons.Add(pobj);
+            po.SaveChanges();
         }
 
         public void Updateperson(Person pobj)
