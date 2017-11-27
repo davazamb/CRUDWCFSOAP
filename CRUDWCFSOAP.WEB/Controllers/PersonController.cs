@@ -17,16 +17,38 @@ namespace CRUDWCFSOAP.WEB.Controllers
             ViewBag.List = li;
             return View();
         }
+        public ActionResult InsetPerson()
+        {
+            return View();
+        }
+        [HttpPost]
         public ActionResult InsetPerson(Person obj)
         {
+            Service1Client o = new Service1Client();
+            o.InsertPerson(obj);
             return View();
         }
+        public ActionResult UpdatePerson()
+        {
+            return View();
+        }
+        [HttpPost]
         public ActionResult UpdatePerson(Person obj)
         {
+            Service1Client o = new Service1Client();
+            o.Updateperson(obj);
             return View();
         }
+        public ActionResult DeletePerson()
+        {
+
+            return View();
+        }
+        [HttpPost]
         public ActionResult DeletePerson(int id)
         {
+            Service1Client o = new Service1Client();
+            o.Deleteperson(id);
             return View();
         }
     }
